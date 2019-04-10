@@ -411,7 +411,7 @@
  param successBlock:     成功回调
  param failureBlock :    失败回调
  */
-+ (void)sdkGetInvestigate:(void (^)(NSArray<NSString *> *))success
++ (void)sdkGetInvestigate:(void (^)(NSArray<NSDictionary *> *))success
              failureBlock:(void (^)(void))failure;
 
 /**
@@ -434,7 +434,7 @@
  param successBlock:     成功回调
  param failureBlock:     失败回调
  */
-+ (void)sdkGetPeers:(void (^)(NSArray<NSString *> *))success
++ (void)sdkGetPeers:(void (^)(NSArray<NSDictionary *> *))success
        failureBlock:(void (^)(void))failure;
 
 /**
