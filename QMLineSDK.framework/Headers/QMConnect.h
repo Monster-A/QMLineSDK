@@ -325,7 +325,7 @@
  
  param message:  消息
  */
-+ (void)removeDataFromDataBase:(CustomMessage *)message;
++ (void)removeDataFromDataBase:(NSString *)messageId;
 
 /**
  修改语音状态接口:
@@ -546,10 +546,48 @@
  param successBlock:  成功回调
  param failBlock:     失败回调
  */
-+ (void)sdkSubmitIntelligentRobotSatisfaction:(NSString *)robotId
++ (void)sdkSubmitIntelligentRobotSatisfaction:(NSString *)satisfaction
                                  satisfaction:(NSString *)satisfaction
                                  successBlock:(void (^)(void))success
                                     failBlock:(void (^)(void))failure;
+
+/**
+ xbot机器人反馈
+ 
+ param isUseful:      是否有帮助
+ param messageId:     消息Id
+ parma robotId:       机器人ID
+ param oriquestion:   访客问题
+ param question:      标准问题
+ param answer:        答案
+ param confidence:    置信度
+ param successBlock:  成功回调
+ param failBlock:     失败回调
+ */
++ (void)sdkSubmitXbotRobotFeedback:(BOOL)isUseful
+                           message:(CustomMessage *)message
+                      successBlock:(void (^)(void))success
+                         failBlock:(void (^)(void))failure;
+
+/**
+ xbot机器人评价
+ 
+ param satisfaction:     评价选项
+ param successBlock:  成功回调
+ param failBlock:     失败回调
+ */
++ (void)sdkSubmitXbotRobotSatisfaction:(NSString *)satisfaction
+                          successBlock:(void (^)(void))success
+                             failBlock:(void (^)(void))failure;
+
+/**
+ 客服是否说话
+ 目前用于满意度评价按钮
+ param successBlock:  成功回调
+ param failBlock:     失败回调
+ */
++ (void)customerServiceIsSpeek:(void (^)(void))success
+                     failBlock:(void (^)(void))failure;
 
 /**
  是否启用留言功能
@@ -630,6 +668,17 @@
 + (BOOL)allowRobot;
 
 /**
+ 机器人的类型
+ 此方法必须s是在启用机器人后使用
+ 小七   7mbot
+ 小陌   7mbot_ai
+ xbot  xbot
+ 云秘   yunmi
+ 智齿   sobot
+ */
++ (NSString *)sdkRobotType;
+
+/**
  转人工按钮是否显示
  */
 + (BOOL)manualButtonStatus;
@@ -659,5 +708,10 @@
  排队数提示文案
  */
 + (NSArray *)sdkQueueMessage;
+
+/**
+ 是否开启访客先说话才接入
+ */
++ (BOOL)customerAccessAfterMessage;
 
 @end

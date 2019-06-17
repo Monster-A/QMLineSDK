@@ -4,6 +4,7 @@
 //
 //  Created by haochongfeng on 2018/10/23.
 //  Copyright © 2018年 haochongfeng. All rights reserved.
+//  SDK Version = 3.0.0
 
 #import <UIKit/UIKit.h>
 
@@ -22,7 +23,7 @@ FOUNDATION_EXPORT const unsigned char QMLineSDKVersionString[];
 #import "QMLineError.h"
 #import "QMLineDelegate.h"
 #import "QMSessionOption.h"
-#import "QMVersion.h"
+
 
 /**
  *  注册accessId成功通知
@@ -103,3 +104,8 @@ FOUNDATION_EXPORT const unsigned char QMLineSDKVersionString[];
  * 小陌机器人满意度评价通知
  */
 #define CUSTOMSRV_SATISFACTION @"satisfaction"
+
+/**
+ * xbot机器人开启联想输入
+ */
+#define CUSTOMSRV_ASSOCIATSINPUT @"associatsinput"
