@@ -4,7 +4,6 @@
 //
 //  Created by haochongfeng on 2018/10/23.
 //  Copyright © 2018年 haochongfeng. All rights reserved.
-//  SDK Version = 3.0.0
 
 #import <UIKit/UIKit.h>
 

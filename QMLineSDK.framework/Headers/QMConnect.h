@@ -581,6 +581,23 @@
                              failBlock:(void (^)(void))failure;
 
 /**
+ xbot联想功能
+ 
+ param text 联想文本
+ param cateIds xbot机器人cateIds
+ param robotId 机器人id
+ param robotType 机器人类型
+ param successBlock:  成功回调
+ param failBlock:     失败回调
+ */
++ (void)sdkSubmitXbotRobotAssociationInput:(NSString *)text
+                                   cateIds:(NSArray *)cateIds
+                                   robotId:(NSString *)robotId
+                                 robotType:(NSString *)robotType
+                              successBlock:(void (^)(NSArray *))success
+                                 failBlock:(void (^)(void))failure;
+
+/**
  客服是否说话
  目前用于满意度评价按钮
  param successBlock:  成功回调
