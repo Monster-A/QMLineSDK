@@ -289,6 +289,21 @@ typedef enum: NSInteger {
 @property (nonatomic, copy)NSString *robotSessionId;
 
 /**
+ xbot机器人任务场景问答-答案
+ */
+@property (nonatomic, copy)NSString *robotFlowList;
+
+/**
+ xbot机器人任务场景问答-标题
+ */
+@property (nonatomic, copy)NSString *robotFlowTip;
+
+/**
+ xbot机器人任务场景问答-标题
+ */
+@property (nonatomic, copy)NSString *robotFlowType;
+
+/**
  富文本消息
  */
 @property (nonatomic, strong)CustomRichText *richText;
