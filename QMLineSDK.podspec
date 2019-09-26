@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.name         = "QMLineSDK"
 
-  s.version      = "3.2.4"
+  s.version      = "3.2.5"
 
   s.summary      = "7moor iOS SDK"
 
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = "8.0"
 
-  s.source       = { :git => "https://github.com/Monster-A/QMLineSDK.git", :tag => "3.2.4" }
+  s.source       = { :git => "https://github.com/Monster-A/QMLineSDK.git", :tag => s.version }
 
   s.vendored_frameworks = 'QMLineSDK.framework'
 
