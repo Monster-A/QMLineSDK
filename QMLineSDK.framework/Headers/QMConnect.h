@@ -740,6 +740,6 @@
 /**
  xbot底部推荐数据
  */
-+ (NSArray *)xbotBottomList;
++ (NSArray *)xbotBottomList:(NSString *)type;
 
 @end
