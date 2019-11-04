@@ -164,7 +164,7 @@ typedef enum: NSInteger {
 @property (nonatomic, copy)NSString *fromType;
 
 /**
- 消息发送状态 成功 or 失败 or 发送中
+ 消息发送状态 成功 or 失败 or 发送中 0/发送成功。1/发送失败。2/发送中
  */
 @property (nonatomic, copy)NSString *status;
 

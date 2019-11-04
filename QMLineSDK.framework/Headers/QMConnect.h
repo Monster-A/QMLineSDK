@@ -16,6 +16,12 @@
 
 @interface QMConnect : NSObject
 
++ (void)registerSDKWithAppKey:(NSString *)accessId
+                     userName:(NSString *)userName
+                       userId:(NSString *)userId
+                     deviceId:(NSString *)deviceId;
+
+
 /**
  注册accessId、初始化SDK:
  
@@ -730,5 +736,10 @@
  是否开启访客先说话才接入
  */
 + (BOOL)customerAccessAfterMessage;
+
+/**
+ xbot底部推荐数据
+ */
++ (NSArray *)xbotBottomList;
 
 @end
