@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "QMLineDelegate.h"
+#import "QMMessage.h"
+
 @class CustomMessage;
 @class QMAgent;
 @class QMSessionOption;
 @class QMEvaluation;
+
 
 @interface QMConnect : NSObject
 
@@ -69,6 +72,11 @@
 + (void)setServerAddress:(NSString *)tcpHost
                  tcpPort:(int)tcpPort
                 httpPost:(NSString *)httpPost;
+
+/*
+ 部分用户Cocoapods服务，需要咨询对接是否需要使用
+ **/
++ (void)setServerToCocoapods;
 
 /*
  推送的token
@@ -372,12 +380,18 @@
  
  param message:  消息字典
  */
-+ (void)insertCardInfoData:(NSDictionary *)message;
++ (void)insertCardInfoData:(NSDictionary *)message type:(NSString *)type;
 
-/**
+/**!
+ 提示: Use the (insertCardInfoData: type:) instead
+ */
++ (void)insertCardInfoData:(NSDictionary *)message __attribute__((deprecated));
+
+/*
  删除商品信息展示消息
  */
 + (void)deleteCardTypeMessage;
++ (void)deleteCardTypeMessage:(NSString *)type;
 
 /**
  变更商品信息展示消息时间
@@ -430,7 +444,26 @@
  */
 
 + (void)newSDKGetInvestigate:(void (^)(QMEvaluation *))success
+                failureBlock:(void (^)(void))failure;
+
+/**
+取消满意度评价:
+获取服务器timestamp时间戳
+param successBlock:     成功回调
+param failureBlock :    失败回调
+*/
++ (void)sdkGetServerTime:(void (^)(NSString *))success
             failureBlock:(void (^)(void))failure;
+
+/**
+查询满意度评价是否超时:
+params 参数
+param successBlock:     成功回调
+param failureBlock :    失败回调
+*/
++ (void)sdkCheckImCsrTimeoutParams:(NSDictionary *)params
+                          success:(void (^)(void))success
+                     failureBlock:(void (^)(void))failure;
 
 /**
  获取技能组信息:
@@ -742,4 +775,32 @@
  */
 + (NSArray *)xbotBottomList:(NSString *)type;
 
+/*
+ 应用杀死时事件处理
+ **/
++ (void)applicationWillTerminateHandle;
+
+
+/**
+获取常见问题
+*/
++ (void)sdkGetCommonQuestion:(void (^)(NSArray *))completion failure:(void(^)(NSString *))failure;
+
+/**
+获取常见问题第二联
+*/
++ (void)sdkGetSubCommonQuestionWithcid:(NSString *)cid completion:(void (^)(NSArray *))completion failure:(void(^)(NSString *))failure;
+
++ (void)sdkGetCommonDataWithParams:(NSDictionary *)params completion:(void (^)(id))completion failure:(void (^)(NSError *))failure;
+
++ (void)changeAllCardMessageHidden;
++ (void)changeCardMessageType:(QMMessageCardReadType)type messageId:(NSString *)messageId;
+
+
+/**
+退出登录，取消推送
+ */
++ (void)sdkLogoutAction:(void(^)(BOOL, NSString *))completion;
+
++ (CustomMessage *)createAndInsertMessageToDBWithMessageType: (NSString *)type filePath: (NSString *)filePath content: (NSString *)content metaData: (NSDictionary *)metaData;
 @end

@@ -34,6 +34,13 @@ typedef enum: NSInteger {
     QMMessageTypeWithdraw = 10,
 }QMMessageType;
 
+typedef enum : NSUInteger {
+    QMMessageCardTypeNone = 0,
+    QMMessageCardTypeReaded,
+    QMMessageCardTypeSeleced,
+    QMMessageCardTypeHidden,
+} QMMessageCardReadType;
+
 #pragma mark -- 消息状态枚举 --
 typedef enum: NSInteger {
     /** 发送成功 */
@@ -339,10 +346,27 @@ typedef enum: NSInteger {
 @property (nonatomic, copy)NSString *cardPrice;
 @property (nonatomic, copy)NSString *cardUrl;
 
-//@property (nonatomic, copy)NSString *customFirst;
-//
-//@property (nonatomic, copy)NSString *customSecond;
-//
+/**
+ 新卡片消息
+ */
+@property (nonatomic, copy)NSString *cardInfo_New;
+
+/**
+ 新卡片详情
+ */
+@property (nonatomic, copy)NSString *cardMessage_New;
+
+/**
+ 新卡片详情
+ */
+@property (nonatomic, strong)NSDictionary *cardMsg_NewDict;
+
+/*
+ 读取状态（目前在xbotcard先使用）
+ **/
+@property (nonatomic, assign) QMMessageCardReadType cardType;
+
+
 //@property (nonatomic, copy)NSString *customThird;
 //
 //@property (nonatomic, copy)NSString *audioText;

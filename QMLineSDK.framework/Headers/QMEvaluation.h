@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
 @class QMEvaluats;
 
 @interface QMEvaluation : NSObject
@@ -18,14 +17,23 @@
 
 @property (nonatomic, copy) NSArray<QMEvaluats *> * evaluats;
 
+@property (nonatomic, copy) NSString * timeout;
+///满意度评价超时是否开启
+@property (nonatomic, assign) BOOL CSRAging;
+
+
 @end
 
 @interface QMEvaluats : NSObject
 
-@property (nonatomic, copy) NSString * name;
+@property (nonatomic, copy) NSString *name;
 
 @property (nonatomic, copy) NSString * value;
 
 @property (nonatomic, copy) NSArray * reason;
+/// 标签是否必填
+@property (nonatomic, copy) NSString * labelRequired;
+/// 标签描述是否必填
+@property (nonatomic, copy) NSString * proposalRequired;
 
 @end
