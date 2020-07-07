@@ -241,6 +241,16 @@ typedef enum: NSInteger {
 @property (nonatomic, copy)NSString *isRobot;
 
 /**
+ 消息类型，系统消息-system、机器人消息-robot、人工消息-UUID、我自己发的消息-my
+ */
+@property (nonatomic, copy)NSString *userType;
+
+/**
+  消息是否展示以及副标题消息权限(目前用于语音转文本) 不展示@"0"  展示@"1"
+ */
+@property (nonatomic, copy)NSString *messageStatus;
+
+/**
  消息是否已读 已读@"1" 未读@"0"
  */
 @property (nonatomic, copy)NSString *isRead;

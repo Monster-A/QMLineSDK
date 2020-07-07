@@ -109,3 +109,8 @@ FOUNDATION_EXPORT const unsigned char QMLineSDKVersionString[];
  * xbot机器人开启联想输入
  */
 #define CUSTOMSRV_ASSOCIATSINPUT @"associatsinput"
+
+ /**
+ *   语音转文本
+ */
+#define CUSTOMSRV_VOICETEXT @"voiceText"

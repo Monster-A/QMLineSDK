@@ -74,11 +74,6 @@
                 httpPost:(NSString *)httpPost;
 
 /*
- 部分用户Cocoapods服务，需要咨询对接是否需要使用
- **/
-+ (void)setServerToCocoapods;
-
-/*
  推送的token
  每次启动应用都需要重新设置
  **/
@@ -164,6 +159,26 @@
                              failBlock:(void (^)(void))failure;
 
 /**
+发起新会话:
+启用日程管理vip坐席失败之后用此接口
+
+调用此接口、可以拥有与客服对话的能力、携带参数
+
+param schedule:      日程id
+param processId:     流程id
+param currentNodeId: 入口节点中访客选择的流转节点ID
+param entranceId:    入口节点中的id
+param successBlock:  接入会话成功回调，回调参数为bool类型，判断后台是否开启问卷调查功能
+param failBlock:     接入会话失败回调，
+*/
+
++ (void)sdkBeginNewChatSessionSchedule:(NSString *)scheduleId
+                             processId:(NSString *)processId
+                         currentNodeId:(NSString *)currentNodeId
+                            entranceId:(NSString *)entranceId
+                          successBlock:(void (^)(BOOL))success
+                             failBlock:(void (^)(void))failure;
+/**
  获取渠道全局配置中 globalSet
  调用此接口获取后台的全局配置信息，注册成功会主动请求一次插入本地plist文件，用户也可以自行调用获取
  
@@ -233,6 +248,15 @@
             duration:(NSString *)duartion
         successBlock:(void (^)(void))success
            failBlock:(void (^)(void))failure;
+
+/**
+ 语音转文本接口:
+ 
+ param message:    消息model
+ */
++ (void)sendMsgAudioToText:(CustomMessage *)message
+              successBlock:(void (^)(void))success
+                 failBlock:(void (^)(void))failure;
 
 /**
  发送文件消息:
@@ -399,6 +423,21 @@
  param time:  消息时间
  */
 + (void)changeCardTypeMessageTime:(NSString *)time;
+
+/**
+ 语音转文本是否显示
+
+ param status:  是否显示 @”0“不显示   @”1“显示
+ param messageId:  消息id  (messageId传@”all“时是隐藏所有已经转的语音----用于退出聊天页面再次进入的时候)
+ */
++ (void)changeVoiceTextShowoOrNot:(NSString *)status message:(NSString *)messageId;
+
+/**
+查询语音转文字的状态
+0不展示  1展示  2正在翻译中…
+@param messageId 消息id
+*/
++ (NSString *)queryVoiceTextStatusWithmessageId:(NSString *)messageId;
 
 /**
  请求人工服务:
@@ -803,4 +842,15 @@ param failureBlock :    失败回调
 + (void)sdkLogoutAction:(void(^)(BOOL, NSString *))completion;
 
 + (CustomMessage *)createAndInsertMessageToDBWithMessageType: (NSString *)type filePath: (NSString *)filePath content: (NSString *)content metaData: (NSDictionary *)metaData;
+
+/**
+ 定时断开会话消息提醒
+ */
++ (void)sdkSendBreakTipMessage;
+
+/**
+ 系统消息头像
+ */
++ (NSString *)sdkSystemMessageIcon;
+
 @end
