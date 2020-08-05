@@ -24,7 +24,6 @@
                        userId:(NSString *)userId
                      deviceId:(NSString *)deviceId;
 
-
 /**
  注册accessId、初始化SDK:
  
@@ -94,7 +93,7 @@
  */
 + (void)sdkBeginNewChatSession:(NSString *)peerId
                   successBlock:(void (^)(BOOL))success
-                     failBlock:(void (^)(void))failure;
+                     failBlock:(void (^)(NSString *))failure;
 
 /**
  发起新会话:
@@ -124,7 +123,7 @@
 + (void)sdkBeginNewChatSession:(NSString *)peerId
                         params:(NSDictionary *)params
                   successBlock:(void (^)(BOOL))success
-                     failBlock:(void (^)(void))failure;
+                     failBlock:(void (^)(NSString *))failure;
 
 /**
  发起新会话:
@@ -138,7 +137,7 @@
 + (void)sdkBeginNewChatSession:(NSString *)peerId
                         option:(QMSessionOption *)option
                   successBlock:(void (^)(BOOL))success
-                     failBlock:(void (^)(void))failure;
+                     failBlock:(void (^)(NSString *))failure;
 
 /**
  发起新会话:
@@ -161,7 +160,7 @@
                             entranceId:(NSString *)entranceId
                                 params:(NSDictionary *)params
                           successBlock:(void (^)(BOOL))success
-                             failBlock:(void (^)(void))failure;
+                             failBlock:(void (^)(NSString *))failure;
 
 /**
 发起新会话:
@@ -182,7 +181,7 @@ param failBlock:     接入会话失败回调，
                          currentNodeId:(NSString *)currentNodeId
                             entranceId:(NSString *)entranceId
                           successBlock:(void (^)(BOOL))success
-                             failBlock:(void (^)(void))failure;
+                             failBlock:(void (^)(NSString *))failure;
 /**
  获取渠道全局配置中 globalSet
  调用此接口获取后台的全局配置信息，注册成功会主动请求一次插入本地plist文件，用户也可以自行调用获取
@@ -857,5 +856,10 @@ param failureBlock :    失败回调
  系统消息头像
  */
 + (NSString *)sdkSystemMessageIcon;
+
+/**
+ 消费未读消息
+ */
++ (void)sdkDealImMsg;
 
 @end

@@ -321,6 +321,11 @@ typedef enum: NSInteger {
 @property (nonatomic, copy)NSString *robotFlowType;
 
 /**
+ xbot机器人点选样式
+ */
+@property (nonatomic, copy)NSString *robotFlowsStyle;
+
+/**
  富文本消息
  */
 @property (nonatomic, strong)CustomRichText *richText;
@@ -376,11 +381,16 @@ typedef enum: NSInteger {
  **/
 @property (nonatomic, assign) QMMessageCardReadType cardType;
 
+/*
+ xbot机器人点赞文案
+ **/
+@property (nonatomic, copy)NSString *fingerUp;
 
-//@property (nonatomic, copy)NSString *customThird;
-//
-//@property (nonatomic, copy)NSString *audioText;
-//
+/*
+xbot机器人点赞文案
+**/
+@property (nonatomic, copy)NSString *fingerDown;
+
 //@property (nonatomic, copy)NSString *from;
 //
 //@property (nonatomic, copy)NSString *tonotify;
