@@ -454,6 +454,18 @@ param failBlock:     接入会话失败回调，
                failBlock:(void (^)(void))failure;
 
 /**
+ 请求人工服务：带技能组id
+ 用于机器人问答自动调用转人工服务
+ 
+ param peerId:  技能组id
+ param successBlock:  成功回调
+ param failBlock:     失败回调
+ */
++ (void)sdkConvertManualWithPeerId:(NSString *)peerId
+                      successBlock:(void (^)(void))success
+                         failBlock:(void (^)(void))failure;
+
+/**
  其他坐席服务授权
  
  专属坐席未在线的情况下，是否接受其他坐席的服务
@@ -768,7 +780,7 @@ param failureBlock :    失败回调
 
 /**
  机器人的类型
- 此方法必须s是在启用机器人后使用
+ 此方法必须是在启用机器人后使用
  小七   7mbot
  小陌   7mbot_ai
  xbot  xbot
@@ -861,5 +873,13 @@ param failureBlock :    失败回调
  消费未读消息
  */
 + (void)sdkDealImMsg;
+
+/**
+ 自定义对方撤回消息的文案
+ 
+ 默认文案：对方撤回一条消息
+ 可用于国际化适配和自定义文案
+ */
++ (void)WithdrawMessageText:(NSString *)text;
 
 @end

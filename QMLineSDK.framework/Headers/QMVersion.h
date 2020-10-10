@@ -10,5 +10,5 @@
 #import <Foundation/Foundation.h>
 
 /// 在线客服sdk版本号
-static const NSString *kQMLineSDKVersion = @"3.2.8";
+static const NSString *kQMLineSDKVersion = @"3.2.9";
 
