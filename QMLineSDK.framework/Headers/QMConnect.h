@@ -444,6 +444,17 @@ param failBlock:     接入会话失败回调，
 + (NSString *)queryVoiceTextStatusWithmessageId:(NSString *)messageId;
 
 /**
+ 插入自定义类型消息 --- 目前只支持插入未定义的消息类型，已定义的消息类型不支持回显
+ 该方法只插入本地消息，只用于自定义消息回显，不会发送给后端和坐席
+ */
++ (void)insertOtherInfoData:(NSDictionary *)mateData type:(NSString *)type;
+
+/**
+ 插入留言内容，用于会话页面展示
+ */
++ (void)insertLeaveMsg:(NSString *)message;
+
+/**
  请求人工服务:
  调用此接口、请求人工服务(如后台开启智能机器人功能、默认为机器人服务器)
  
@@ -571,6 +582,8 @@ param failureBlock :    失败回调
                           value:(NSString *)value
                      radioValue:(NSArray *)radioValue
                          remark:(NSString *)remark
+                            way:(NSString *)way
+                      operation:(NSString *)operation
                    successBlock:(void (^)(void))success
                       failBlock:(void (^)(void))failure;
 
@@ -872,7 +885,7 @@ param failureBlock :    失败回调
 /**
  消费未读消息
  */
-+ (void)sdkDealImMsg;
++ (void)sdkDealImMsgWithMessageID:(NSArray *)messageID;
 
 /**
  自定义对方撤回消息的文案
@@ -881,5 +894,15 @@ param failureBlock :    失败回调
  可用于国际化适配和自定义文案
  */
 + (void)WithdrawMessageText:(NSString *)text;
+
+/**
+ 是否开启已读未读
+ */
++ (BOOL)sdkWhetherToOpenReadAndUnread;
+
+/**
+ 查询坐席的未消费的消息
+ */
++ (NSArray *) sdkGetAgentMessageWithIsRead;
 
 @end

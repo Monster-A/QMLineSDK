@@ -256,6 +256,11 @@ typedef enum: NSInteger {
 @property (nonatomic, copy)NSString *isRead;
 
 /**
+ 语音消息已读未读
+ */
+@property (nonatomic, copy)NSString *voiceRead;
+
+/**
  机器人回复是否有帮助 不是机器人@"none" 有帮助@"useful" 无帮助@"useless"
  */
 @property (nonatomic, copy)NSString *isUseful;
