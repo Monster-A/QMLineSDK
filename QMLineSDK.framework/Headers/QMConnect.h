@@ -92,7 +92,7 @@
  param failBlock:     接入会话失败回调，
  */
 + (void)sdkBeginNewChatSession:(NSString *)peerId
-                  successBlock:(void (^)(BOOL))success
+                  successBlock:(void (^)(BOOL, NSString *))success
                      failBlock:(void (^)(NSString *))failure;
 
 /**
@@ -106,7 +106,7 @@
  */
 + (void)sdkBeginNewChatSession:(NSString *)peerId
                       delegate:(id<QMKServiceDelegate>)delegate
-                  successBlock:(void (^)(BOOL))success
+                  successBlock:(void (^)(BOOL, NSString *))success
                      failBlock:(void (^)(void))failure;
 
 
@@ -122,7 +122,7 @@
  */
 + (void)sdkBeginNewChatSession:(NSString *)peerId
                         params:(NSDictionary *)params
-                  successBlock:(void (^)(BOOL))success
+                  successBlock:(void (^)(BOOL, NSString *))success
                      failBlock:(void (^)(NSString *))failure;
 
 /**
@@ -136,7 +136,7 @@
  */
 + (void)sdkBeginNewChatSession:(NSString *)peerId
                         option:(QMSessionOption *)option
-                  successBlock:(void (^)(BOOL))success
+                  successBlock:(void (^)(BOOL, NSString *))success
                      failBlock:(void (^)(NSString *))failure;
 
 /**
@@ -159,7 +159,7 @@
                          currentNodeId:(NSString *)currentNodeId
                             entranceId:(NSString *)entranceId
                                 params:(NSDictionary *)params
-                          successBlock:(void (^)(BOOL))success
+                          successBlock:(void (^)(BOOL, NSString *))success
                              failBlock:(void (^)(NSString *))failure;
 
 /**
@@ -180,7 +180,7 @@ param failBlock:     接入会话失败回调，
                              processId:(NSString *)processId
                          currentNodeId:(NSString *)currentNodeId
                             entranceId:(NSString *)entranceId
-                          successBlock:(void (^)(BOOL))success
+                          successBlock:(void (^)(BOOL, NSString *))success
                              failBlock:(void (^)(NSString *))failure;
 /**
  获取渠道全局配置中 globalSet
@@ -213,7 +213,7 @@ param failBlock:     接入会话失败回调，
  */
 + (void)sendMsgText:(NSString *)text
        successBlock:(void (^)(void))success
-          failBlock:(void (^)(void))failure;
+          failBlock:(void (^)(NSString *))failure;
 
 /**
  发送图片消息:
@@ -225,7 +225,7 @@ param failBlock:     接入会话失败回调，
  */
 + (void)sendMsgPic:(UIImage *)image
       successBlock:(void (^)(void))success
-         failBlock:(void (^)(void))failure;
+         failBlock:(void (^)(NSString *))failure;
 
 /**
  发送图片消息:
@@ -237,7 +237,7 @@ param failBlock:     接入会话失败回调，
  */
 + (void)sendMsgImage:(NSString *)filePath
         successBlock:(void (^)(void))success
-           failBlock:(void (^)(void))failure;
+           failBlock:(void (^)(NSString *))failure;
 
 /**
  发送语音消息:
@@ -251,7 +251,7 @@ param failBlock:     接入会话失败回调，
 + (void)sendMsgAudio:(NSString *)audio
             duration:(NSString *)duartion
         successBlock:(void (^)(void))success
-           failBlock:(void (^)(void))failure;
+           failBlock:(void (^)(NSString *))failure;
 
 /**
  语音转文本接口:
@@ -278,7 +278,7 @@ param failBlock:     接入会话失败回调，
            fileSize:(NSString *)fileSize
      progressHander:(void (^)(float))progress
        successBlock:(void (^)(void))success
-          failBlock:(void (^)(void))failure;
+          failBlock:(void (^)(NSString *))failure;
 
 /**
  发送商品信息消息:
@@ -290,7 +290,7 @@ param failBlock:     接入会话失败回调，
  */
 + (void)sendMsgCardInfo:(NSDictionary *)message
            successBlock:(void (^)(void))success
-              failBlock:(void (^)(void))failure;
+              failBlock:(void (^)(NSString *))failure;
 
 /**
  下载消息中的文件：
@@ -317,7 +317,7 @@ param failBlock:     接入会话失败回调，
  */
 + (void)resendMessage:(CustomMessage *)message
          successBlock:(void (^)(void))success
-            failBlock:(void (^)(void))failure;
+            failBlock:(void (^)(NSString *))failure;
 
 /**
  封装消息模型:
@@ -584,6 +584,7 @@ param failureBlock :    失败回调
                          remark:(NSString *)remark
                             way:(NSString *)way
                       operation:(NSString *)operation
+                      sessionId:(NSString *)sessionId
                    successBlock:(void (^)(void))success
                       failBlock:(void (^)(void))failure;
 
@@ -825,8 +826,8 @@ param failureBlock :    失败回调
  param successBlock:  成功回调
  param failBlock:     回调失败
  */
-+ (void)sdkChatTimerBreaking:(void (^)(NSDictionary *))success
-                   failBlock:(void (^)(void))failure;
+//+ (void)sdkChatTimerBreaking:(void (^)(NSDictionary *))success
+//                   failBlock:(void (^)(void))failure;
 
 /**
  排队数提示文案
@@ -847,7 +848,6 @@ param failureBlock :    失败回调
  应用杀死时事件处理
  **/
 + (void)applicationWillTerminateHandle;
-
 
 /**
 获取常见问题
@@ -904,5 +904,45 @@ param failureBlock :    失败回调
  查询坐席的未消费的消息
  */
 + (NSArray *) sdkGetAgentMessageWithIsRead;
+
+/**
+ 满意度评价消息  只写入本地数据库
+ 
+ param text:       标题&评价内容
+ param ID:         满意度id 即会话id
+ param status:   满意度状态  0--未评价  1--已评价  2--评价内容
+ */
+//+ (void)sdkSendEvaluateMessage:(NSString *)text
+//                        withID:(NSString *)ID
+//                    withStatus:(NSString *)status
+//                 withTimestamp:(NSString *)timestamp;
++ (void)sdkSendEvaluateMessage:(NSDictionary *)dic;
+
+/**
+ 通过evaluateId更改满意度评价状态
+ */
++ (void)sdkUpdateEvaluateStatusWithEvaluateId:(NSString *)evaluateId;
+
+/**
+ 定时关闭会话时间到期后调用该接口
+ */
++ (void)sdkClientChatClose:(NSString *)chatID;
+
+/*
+ 修改常见问题index
+ **/
++ (void)sdkChangeCommonProblemIndex:(NSString *)index withMessageID:(NSString *)messageId;
+
+/*
+ 修改robotFlowList
+ **/
++ (void)sdkUpdateRobotFlowList:(NSString *)flowList withMessageID:(NSString *)messageId;
+
+/*
+ 修改robotFlowSend
+ **/
++ (void)sdkUpdateRobotFlowSend:(NSString *)flowSend withMessageID:(NSString *)messageId;
+
+
 
 @end

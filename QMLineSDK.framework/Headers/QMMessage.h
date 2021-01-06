@@ -330,6 +330,20 @@ typedef enum: NSInteger {
  */
 @property (nonatomic, copy)NSString *robotFlowsStyle;
 
+/*
+ xbot机器人单选多选
+ 0 --- 单选
+ 1 --- 多选
+ **/
+@property (nonatomic, copy)NSString *robotFlowSelect;
+
+/*
+ 多选是否已经发送
+ 0 --- 未发送
+ 1 --- 已发送
+ **/
+@property (nonatomic, copy)NSString *robotFlowSend;
+
 /**
  富文本消息
  */
@@ -386,6 +400,12 @@ typedef enum: NSInteger {
  **/
 @property (nonatomic, assign) QMMessageCardReadType cardType;
 
+/**
+ 视频状态 "0"已接通  "1"取消  "2"拒绝
+ */
+@property (nonatomic, copy)NSString *videoStatus;
+
+
 /*
  xbot机器人点赞文案
  **/
@@ -396,13 +416,36 @@ xbot机器人点赞文案
 **/
 @property (nonatomic, copy)NSString *fingerDown;
 
-//@property (nonatomic, copy)NSString *from;
-//
-//@property (nonatomic, copy)NSString *tonotify;
-//
-//@property (nonatomic, copy)NSString *type;
-//
-//@property (nonatomic, copy)NSString *hideTime;
+/*
+ 满意度评价id
+ **/
+@property (nonatomic, copy)NSString *evaluateId;
+
+/*
+ 满意度评价是否已评价
+ 同一个满意度id下的 是否已评价
+ **/
+@property (nonatomic, copy)NSString *evaluateStatus;
+
+/*
+ 满意度服务时间
+ **/
+@property (nonatomic, copy)NSString *evaluateTimestamp;
+
+/*
+ 满意度超时时长
+ **/
+@property (nonatomic, copy)NSString *evaluateTimeout;
+
+/*
+ 常见问题分组
+ **/
+@property (nonatomic, copy)NSString *common_questions_group;
+
+/*
+ 记录常见问题在哪一组
+ **/
+@property (nonatomic, copy)NSString *common_selected_index;
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key;
 
