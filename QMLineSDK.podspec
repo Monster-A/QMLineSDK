@@ -36,4 +36,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'FMDB', '~> 2.7.5'
 
+  s.dependency 'SocketRocket', '~> 0.5.1'
+
 end
