@@ -943,6 +943,26 @@ param failureBlock :    失败回调
  **/
 + (void)sdkUpdateRobotFlowSend:(NSString *)flowSend withMessageID:(NSString *)messageId;
 
+/*
+ 用于机器人表单消息上传附件
+ fileDic   附件消息体 必须包含fileName、fileSize、filePath
+ progress  上传进度
+ success   上传成功返回链接
+ failBlock 上传失败
+ **/
++ (void)sdkSendFile:(NSDictionary *)fileDic progress:(void (^)(float))progress success:(void (^)(NSString *))success failBlock:(void (^)(NSString *))failure;
 
+/*
+ 提交表单消息
+ **/
++ (void)sdkSubmitFormMessage:(NSDictionary *)dic;
+
+/*
+ 更改表单消息
+ 0 消息第一次插入数据库 用于弹出消息
+ 1 已存在 不需要弹出
+ 2 已提交 不能点击弹出
+ **/
++ (void)sdkUpdateFormStatus:(NSString *)status withMessageID:(NSString *)messageId;
 
 @end

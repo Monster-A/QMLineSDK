@@ -447,6 +447,16 @@ xbot机器人点赞文案
  **/
 @property (nonatomic, copy)NSString *common_selected_index;
 
+/*
+ xbot表单消息
+ **/
+@property (nonatomic, copy)NSString *xbotForm;
+
+/*
+ xbot表单消息 是否第一次出现
+ **/
+@property (nonatomic, copy)NSString *xbotFirst;
+
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key;
 
 @end
