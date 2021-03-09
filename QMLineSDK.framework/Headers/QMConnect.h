@@ -965,4 +965,29 @@ param failureBlock :    失败回调
  **/
 + (void)sdkUpdateFormStatus:(NSString *)status withMessageID:(NSString *)messageId;
 
+#pragma mark - 视频接口
+/**
+ 是否开启视频权限 yes为开启
+ */
++ (BOOL)sdkVideoRights;
+
+/**
+ 接受视频
+ */
++ (void)sdkAcceptVideo:(void (^)(void))success failBlock:(void (^)(void))failure;
+
+/**
+ 拒绝视频
+ */
++ (void)sdkRefuseVideo:(void (^)(void))success failBlock:(void (^)(void))failure;
+
+/**
+ 取消视频
+ */
++ (void)sdkCannelVideo:(void (^)(void))success failBlock:(void (^)(void))failure;
+/**挂断*/
++ (void)sdkHangupVideo:(NSString *)originator successBlock:(void (^)(void))success failBlock:(void (^)(void))failure;
++ (void)sdkGetVideo:(NSString *)type Completion:(void (^)(id))completion failure:(void (^)(NSError *))failure;
+
+
 @end
