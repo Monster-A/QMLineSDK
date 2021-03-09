@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = "9.0"
 
-  s.source       = { :git => "https://github.com/Monster-A/QMLineSDK.git", :tag => s.version }
+  s.source       = { :git => "https://github.com/Monster-A/QMLineSDK.git", :tag => "3.6.0" }
 
   s.vendored_frameworks = 'QMLineSDK.framework'
 
