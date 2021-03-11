@@ -38,6 +38,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'SocketRocket', '~> 0.5.1'
 
-
+  s.pod_target_xcconfig = { 'VALID_ARCHS' => 'x86_64 armv7 arm64' }
 
 end
