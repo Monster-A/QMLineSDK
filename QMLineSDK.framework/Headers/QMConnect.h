@@ -19,11 +19,6 @@
 
 @interface QMConnect : NSObject
 
-+ (void)registerSDKWithAppKey:(NSString *)accessId
-                     userName:(NSString *)userName
-                       userId:(NSString *)userId
-                     deviceId:(NSString *)deviceId;
-
 /**
  注册accessId、初始化SDK:
  
@@ -82,6 +77,11 @@
  每次启动应用都需要重新设置
  **/
 + (void)setServerToken:(NSData *)deviceToken;
+
+/*
+ 更改七牛服务地址
+ **/
++ (void)setFileServer:(NSString *)fileUrl withZone:(NSString *)zoneUrl;
 
 /**
  发起新会话:

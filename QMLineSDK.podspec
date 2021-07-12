@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.name         = "QMLineSDK"
 
-  s.version      = "3.6.0"
+  s.version      = "3.7.0"
 
   s.summary      = "7moor iOS SDK"
 

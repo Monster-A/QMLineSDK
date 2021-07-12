@@ -110,6 +110,11 @@ FOUNDATION_EXPORT const unsigned char QMLineSDKVersionString[];
  */
 #define CUSTOMSRV_ASSOCIATSINPUT @"associatsinput"
 
+///**
+// * 人工状态下开启联想输入
+// */
+//#define CUSTOMSRV_HUMANASSOCIATSINPUT @"humanAssociatsinput"
+
  /**
  *   语音转文本
  */
